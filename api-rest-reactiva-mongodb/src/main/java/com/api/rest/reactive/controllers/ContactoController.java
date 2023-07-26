@@ -26,7 +26,7 @@ public class ContactoController {
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping(value = "/contactos/{email}")
+    @GetMapping(value = "/contactos/byEmail/{email}")
     public Mono<ResponseEntity<Contacto>> obtenerContactoPorEmail(@PathVariable String email){
         return contactoRepository.findFirstByEmail(email).map(contacto -> new ResponseEntity<>(contacto, HttpStatus.OK))
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
